@@ -1,0 +1,68 @@
+//Publisher's code
+int led = A5;
+int boardLed = D7;
+
+void setup() {
+    
+    pinMode(led,OUTPUT); 
+    pinMode(boardLed,OUTPUT);
+}
+
+
+void loop() 
+{
+    Particle.publish("Gurpreets_event","wave");
+    delay(15000);
+}
+
+
+..............................
+
+
+
+//Subscriber's Code(Buddy's code)
+int led = A5;
+int boardLed = D7;
+
+
+
+void setup() {
+    // This part is mostly the same:
+    pinMode(led,OUTPUT); // Our LED pin is output (lighting up the LED)
+    pinMode(boardLed,OUTPUT); // Our on-board LED is output as well
+
+    // Here we are going to subscribe to your buddy's event using Particle.subscribe
+    Particle.subscribe("Gurpreets_event", myHandler);
+    
+   
+
+    
+
+}
+
+
+void loop() {
+   
+    
+}
+
+
+
+void myHandler(const char *event, const char *data)
+{
+    
+
+    digitalWrite(led,HIGH);
+    delay(1000);
+    digitalWrite(led,LOW);
+    delay(1000);
+    digitalWrite(led,HIGH);
+    delay(1000);
+    digitalWrite(led,LOW);
+    delay(1000);
+    digitalWrite(led,HIGH);
+    delay(1000);
+    digitalWrite(led,LOW);
+    delay(1000);
+    
+}
